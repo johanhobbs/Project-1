@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+
+:root {
+    --primary-color: #f9f9f9;
+    --border-radius: 5px;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--primary-color);
+    font-family: 'Times New Roman', Times, serif;
+}
