@@ -71,13 +71,28 @@ bookmarks.forEach((bookmarks) => {
     )
     favicon.setAttribute("alt", "favicon")
 
-    const link = document.createElement("a")
-    link.setAttribute("href", `${url}`)
-    link.setAttribute("target", "_blank")
-    link.textContent = name
+    const link = document.createElement("a");
+    link.setAttribute("href", `${url}`);
+    link.setAttribute("target", "_blank");
+    link.textContent = name;
 
-    linkInfo.append(favicon, link)
-    item.append(closeIcon, linkInfo)
-    bookmarkContainer.appendChild(item)
-})
+// Append to bookmarks container
+    linkInfo.append(favicon, link);
+    item.append(closeIcon, linkInfo);
+    bookmarkContainer.appendChild(item);
+ });
+};
+
+function fetchBookmarks(){
+
+if (localStorage.getItem("bookmarks")) {
+    bookmarks = JSON.parse(localStorage.getItem("bookmarks"))
+ } else {
+    //create bookmarks array in local storage (Create a sample bookmark)
+    bookmarks = [
+        {name: "Google", url:"https://www.google.com"}
+    ] 
+    localStorage.setItem("bookmarks", JSON.stringify(bookmarks))
+ }
+ buildBookMarkDOM()
 };
