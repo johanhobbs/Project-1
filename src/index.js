@@ -96,3 +96,43 @@ if (localStorage.getItem("bookmarks")) {
  }
  buildBookMarkDOM()
 };
+
+// Delete bookmark
+function deleteBookmark(url) {
+    //Pass the URL loop through the bookmarks array and if matched then delete the bookmark.
+    bookmarks.forEach((bookmark, i) => {
+        if(bookmark.url === url) {
+            bookmark.splice(i, 1)
+          } //delete bookmark from the arrray at index i and remove 1 item
+        })
+        //update bookmarks array in local storage, re populate the DOM.close-icon
+        localStorage.setItem("bookmarks", JSON.stringify(bookmarks))
+        fetchBookmarks()
+    };
+
+    // Handle data from the form input
+    function storeBookmark(e) {
+        e.preventDefault()
+    };
+
+const nameValue = websiteNameEl.value;
+let urlValue = websiteUrlEl.value;
+
+if (!urlValue.includes("http://", "https://")) {
+    urlValue = `https://${urlValue}`
+
+};
+
+console.log(nameValue, urlValue);
+
+if (!validate(nameValue, urlValue)) {
+    return false
+};
+
+const bookmark = {
+    name: nameValue,
+    url: urlValue
+};
+
+bookmarks.push(bookmark);
+localStorage.setItem("bookmarks", JSON.stringify(bookmarks)); // It is needed to be stringify before we send to our backend server.
