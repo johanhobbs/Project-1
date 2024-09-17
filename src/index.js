@@ -111,9 +111,9 @@ function deleteBookmark(url) {
     };
 
     // Handle data from the form input
-    function storeBookmark(e) {
+function storeBookmark(e) {
         e.preventDefault()
-    };
+    
 
 const nameValue = websiteNameEl.value;
 let urlValue = websiteUrlEl.value;
@@ -136,3 +136,11 @@ const bookmark = {
 
 bookmarks.push(bookmark);
 localStorage.setItem("bookmarks", JSON.stringify(bookmarks)); // It is needed to be stringify before we send to our backend server.
+
+fetchBookmarks();
+bookmarkForm.requestFullscreen();
+websiteNameEl.focus();
+};
+
+//Event listener for the bookmark form
+bookmarkForm.addEventListener("submit", storeBookmark);
