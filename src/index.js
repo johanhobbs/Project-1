@@ -144,3 +144,6 @@ websiteNameEl.focus();
 
 //Event listener for the bookmark form
 bookmarkForm.addEventListener("submit", storeBookmark);
+
+//On load fetch bookmarks
+fetchBookmarks();
